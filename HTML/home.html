@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../CSS/home.css">
+    <title>Home</title>
+    <script type="text/JavaScript" src="../Javascript/home.js"></script>
+</head>
+
+<body>
+    <!-- UC1 Employee payroll app home page UI Header with logo-->
+    <header class="header-content header">
+        <div class="logo-content">
+            <img src="../Assets/assets/images/logo.png" alt="logo">
+            <div>
+                <span class="emp-text">Employee</span>
+                <span class="emp-text emp-payroll">PAYROLL</span>
+            </div>
+        </div>
+    </header>
+
+    <!-- UC2 Employee payroll form with heaader and button-->
+    <div class="main-content">
+        <div class="header-content sub-main-content">
+            <div class="emp-detail-text">
+                Employee Details
+                <div class="emp-count">0</div>
+            </div>
+            <div onclick="location.href='./Addinfo.html'" class="add-button">
+                <div class="plus-icon">
+                    <img src="../Assets/assets/icons/add-24px.svg" alt="Add User Logo">
+                </div>
+                <div>Add User</div>
+            </div>
+        </div>
+
+        <!-- UC3 Ability to view employee payroll details in tabular format-->
+        <div class="table-main">
+            <table class="table" id="display">
+                <tr>
+                    <th>Profile</th>
+                    <th>Name</th>
+                    <th>Gender</th>
+                    <th>Department</th>
+                    <th>Salary</th>
+                    <th>Start Date</th>
+                    <th>Actions</th>
+                </tr>
+
+                <tr>
+                    <td><img class="profile" alt="profileImage" src="../Assets/assets/profile-images/Ellipse -2.png"></td>
+                    <td>Shubham Saini</td>
+                    <td>Male</td>
+                    <td>
+                        <div class="dept-label">HR</div>
+                        <div class="dept-label">Engineer</div>
+                    </td>
+                    <td>400000</td>
+                    <td>25 Mar 2021</td>
+                    <td>
+                        <img alt="delete" src="../Assets/assets/icons/delete-black-18dp.svg">
+                        <img alt="update" src="../Assets/assets/icons/create-black-18dp.svg">
+                    </td>
+                </tr>
+            </table>
+        </div>
+    </div>
+</body>
+
+</html>
