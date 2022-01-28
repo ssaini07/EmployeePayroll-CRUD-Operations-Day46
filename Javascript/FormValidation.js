@@ -1,6 +1,10 @@
+let isUpdate = false; // for Day46 UC2
+employeePayrollObject = {}; // for Day46 UC2
+
 window.addEventListener('DOMContentLoaded', () => {
     validName();
     salaryRange();
+    checkForUpdate(); // For Day46 UC2
 });
 
 // UC2
@@ -118,5 +122,47 @@ const unsetSelectedValues = (propertyValue) => {
 
 const setValue = (id, value) => {
     const element = document.querySelector(id);
+    element.value = value;
+}
+
+/** Day46 => UC2 => Update an employee payroll details */
+/** check for Update and set the valuees of the form elements  */
+const checkForUpdate = () => {
+    let jsonData = localStorage.getItem('edit-emp');
+    isUpdate = jsonData ? true : false;
+    if (!isUpdate)
+        return;
+    employeePayrollObject = JSON.parse(jsonData);
+    setForm();
+}
+
+const setForm = () => {
+    setValue('#name', employeePayrollObject._name);
+    setSelectValue('[name=profile]', employeePayrollObject._profilePic);
+    setSelectValue('[name=gender]', employeePayrollObject._gender);
+    setSelectValue('[name=department]', employeePayrollObject._department);
+    setValue('#salary', employeePayrollObject._salary);
+    setTextValue('.salary-output', employeePayrollObject._salary);
+    let date = stringifyDate(employeePayrollObject._startDate).split(" ");
+    setValue('#day', date[0]);
+    setValue('#month', date[1]);
+    setValue('#year', date[2]);
+    setValue('#notes', employeePayrollObject._note);
+}
+
+const setSelectValue = (propertyValue, value) => {
+    let allItem = document.querySelectorAll(propertyValue);
+    allItem.forEach(item => {
+        if (Array.isArray(value)) {
+            if (value.includes(item.value)) {
+                item.checked = true;
+            }
+        } else if (item.value == value) {
+            item.checked = true;
+        }
+    });
+}
+const setValue = (id, value) => {
+    let element = document.querySelector(id);
     element.value = value;
 }

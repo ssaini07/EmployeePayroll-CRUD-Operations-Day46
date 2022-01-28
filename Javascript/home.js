@@ -41,7 +41,7 @@ const createInnerHTML = () => {
     <td>${empPayrollData._startDate}</td>
     <td>
         <img id ="${empPayrollData._id}" alt="delete" src="../Assets/assets/icons/delete-black-18dp.svg" onClick=remove(this)>
-        <img id ="${empPayrollData._id}" alt="update" onclick="update()"" src="../Assets/assets/icons/create-black-18dp.svg">
+        <img id ="${empPayrollData._id}" alt="update" src="../Assets/assets/icons/create-black-18dp.svg" onClick=update(this)>
     </td>
 </tr>
     
@@ -97,4 +97,13 @@ const remove = (data) => {
     localStorage.setItem('EmployeePayrollList', JSON.stringify(empPayrollList));
     document.querySelector('.emp-count').textContent = empPayrollList.length;
     createInnerHTML();
+}
+
+/** Day46 => UC2 => Update an employee payroll details */
+const update = (data) => {
+    let empPayrollData = empPayrollList.find(empData => empData._id == data.id);
+    if (!employeeData)
+        return;
+    localStorage.setItem('edit-emp', JSON.stringify(employeeData));
+    window.location.replace(siteProperties.addEmployee);
 }
