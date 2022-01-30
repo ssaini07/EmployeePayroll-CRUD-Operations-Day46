@@ -4,6 +4,7 @@ window.addEventListener('DOMContentLoaded', (event) => {
     empPayrollList = getEmployeePayrollDataFromStorage();
     document.querySelector(".emp-count").textContent = empPayrollList.length;
     createInnerHTML();
+    localStorage.removeItem("edit-emp");
 });
 
 const getEmployeePayrollDataFromStorage = () => {
@@ -25,7 +26,7 @@ const createInnerHTML = () => {
     <th>Start Date</th>
     <th>Actions</th>
 </tr>`;
-        if (empPayrollList.length == 0) return;
+        //if (empPayrollList.length == 0) return;
         let innerHtml = `${headerHtml}`;
         //let innerHtml = `${headerHtml}
         //let empPayrollList = createEmployeePayrollJson();
@@ -102,8 +103,8 @@ const remove = (data) => {
 /** Day46 => UC2 => Update an employee payroll details */
 const update = (data) => {
     let empPayrollData = empPayrollList.find(empData => empData._id == data.id);
-    if (!employeeData)
+    if (!empPayrollData)
         return;
-    localStorage.setItem('edit-emp', JSON.stringify(employeeData));
+    localStorage.setItem('edit-emp', JSON.stringify(empPayrollData));
     window.location.replace(siteProperties.addEmployee);
 }
